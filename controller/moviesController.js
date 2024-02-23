@@ -31,7 +31,7 @@ const getMovie = async (req, res) => {
     console.log('Movie ID:', movieId); // Log the movieId on the server side
     const movie = await Movies.findById(movieId);
     console.log('Movie Details:', movie); // Log the movie details
-    movie.rating = average[0].avg_rating
+    movie.rating = average[0]?.avg_rating ? average[0].avg_rating : 0
     res.status(200).json(movie);
   } catch (error) {
     console.error('Error fetching movie details:', error);
